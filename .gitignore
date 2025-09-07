@@ -1,0 +1,35 @@
+# Gradle build output
+/build/
+!/gradle/wrapper/gradle-wrapper.jar
+!/gradle/wrapper/gradle-wrapper.properties
+.gradle/
+
+# IDE files
+*.iml
+.idea/
+*.ipr
+*.iws
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Java class files
+*.class
+
+# Generated files
+out/
+
+# Temporary files
+*.tmp
+*.swp
+
+# Test reports
+build/reports/
+
+# Ignore local environment files
+.env
+

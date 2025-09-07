@@ -1,0 +1,38 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'maven-publish'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
+}
+
+group = 'com.yourorg.qa'
+version = '0.1.0'
+
+repositories { mavenCentral() }
+
+dependencies {
+    implementation 'io.javalin:javalin:6.1.6'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.17.1'
+    implementation 'org.slf4j:slf4j-simple:2.0.12'
+}
+
+application {
+    mainClass = 'com.yourorg.qa.mcp.App'
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            url = System.getenv('ARTIFACTORY_MAVEN_URL') ?: 'https://artifactory.example.com/artifactory/maven-local'
+            credentials {
+                username = System.getenv('ARTIFACTORY_USER')
+                password = System.getenv('ARTIFACTORY_API_KEY')
+            }
+        }
+    }
+}
